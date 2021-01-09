@@ -3,21 +3,13 @@
 {% block title %}All the best poems!
 {% endblock %}
 
-
 {% block body %}
-
-	{% block stylesheet %}
-		<link rel="stylesheet" href="{{ asset('assets/css/poem-card.css')}}"/>
-	{% endblock %}
-
-
 	<h1>Poems</h1>
 
-	<div
-		class="">
+	<div>
 		{# POEM ITERATOR #}
 		{% for poem in poems %}
-			<div class="card poem-card bg-light m-2">
+			<div class="card poem-card bg-light mb-2">
 				<div
 					class="card-body">
 
@@ -41,7 +33,7 @@
 							<i class="bi bi-eye"></i>
 						</a>
 						{# EDIT #}
-						<a title="Edit poem" href="{{ path('poem_edit', {'id': poem.id}) }}" class="btn btn-default">
+						<a title="Edit poem" href="{{ path('poem_edit', {'id': poem.id}) }}" class="btn btn-light">
 							<i class="bi bi-pencil"></i>
 						</a>
 					</div>
@@ -50,37 +42,9 @@
 		{% endfor %}
 	</div>
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Author</th>
-				<th>Content</th>
-				<th>Praise</th>
-				<th>Created</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for poem in poems %}
-				<tr>
-					<td>{{ poem.id }}</td>
-					<td>{{ poem.author }}</td>
-					<td>{{ poem.content }}</td>
-					<td>{{ poem.praise }}</td>
-					<td>{{ poem.created ? poem.created|date('Y-m-d') : '' }}</td>
-					<td>
-						<a href="{{ path('poem_show', {'id': poem.id}) }}">show</a>
-						<a href="{{ path('poem_edit', {'id': poem.id}) }}">edit</a>
-					</td>
-				</tr>
-			{% else %}
-				<tr>
-					<td colspan="6">no records found</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+	{# NEW BUTTON #}
+	<a class="btn btn-primary" href="{{ path('poem_new') }}">
+		<i class="bi bi-plus"></i>
+		Add new poem</a>
 
-	<a href="{{ path('poem_new') }}">Create new</a>
 {% endblock %}
