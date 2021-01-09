@@ -38,5 +38,11 @@
     }}
 </div>
 
-<button class="btn btn-primary">{{ button_label|default('Add new Poem') }}</button>
+<button class="btn btn-primary">
+	{% if button_label is defined%}
+		<i class="bi bi-cloud-check"></i>
+	{% else %}
+		<i class="bi bi-cloud-plus"></i>
+	{% endif %}
+</button>
 {{ form_end(form,{'render_rest':false}) }}

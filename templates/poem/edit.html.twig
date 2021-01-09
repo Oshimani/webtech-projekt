@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Poem{% endblock %}
+{% block title %}Edit Poem
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Poem</h1>
+	<h1>Edit "{{poem.title}}"</h1>
 
-    {{ include('poem/_form.html.twig', {'button_label': 'Update'}) }}
+	{{ include('poem/_form.html.twig', {'button_label': 'update'}) }}
 
-    <a href="{{ path('poem_index') }}">back to list</a>
+	<a title="Back to list" class="btn btn-light" href="{{ path('poem_index') }}">
+		<i class="bi bi-arrow-left-circle"></i>
+	</a>
 
-    {{ include('poem/_delete_form.html.twig') }}
+	{{ include('poem/_delete_form.html.twig') }}
 {% endblock %}
