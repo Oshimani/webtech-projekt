@@ -1,41 +1,60 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Poem index{% endblock %}
+{% block title %}Poem index
+{% endblock %}
 
 {% block body %}
-    <h1>Poem index</h1>
+	<h1>Poems</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Author</th>
-                <th>Content</th>
-                <th>Praise</th>
-                <th>Created</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for poem in poems %}
-            <tr>
-                <td>{{ poem.id }}</td>
-                <td>{{ poem.author }}</td>
-                <td>{{ poem.content }}</td>
-                <td>{{ poem.praise }}</td>
-                <td>{{ poem.created ? poem.created|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('poem_show', {'id': poem.id}) }}">show</a>
-                    <a href="{{ path('poem_edit', {'id': poem.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<div>
+		{# POEM ITERATOR #}
+		{% for poem in poems %}
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">{{poem.title}}</h5>
+					<div>
+						<span>by
+							{{poem.author}}</span>
+						<span>{{poem.created.format('d.m.Y')}}</span>
+					</div>
+					<p class="card-text">{{poem.content}}</p>
+					<a href="#" class="btn btn-primary"><i class="bi bi-pencil"></i></a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 
-    <a href="{{ path('poem_new') }}">Create new</a>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Author</th>
+				<th>Content</th>
+				<th>Praise</th>
+				<th>Created</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for poem in poems %}
+				<tr>
+					<td>{{ poem.id }}</td>
+					<td>{{ poem.author }}</td>
+					<td>{{ poem.content }}</td>
+					<td>{{ poem.praise }}</td>
+					<td>{{ poem.created ? poem.created|date('Y-m-d') : '' }}</td>
+					<td>
+						<a href="{{ path('poem_show', {'id': poem.id}) }}">show</a>
+						<a href="{{ path('poem_edit', {'id': poem.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('poem_new') }}">Create new</a>
 {% endblock %}
