@@ -16,7 +16,7 @@ class PoemType extends AbstractType
             ->add('author')
             ->add('title')
             ->add('content')
-            ->add('praise')
+            // ->add('praise')
             ->add('created', DateType::class,[
                 'widget' => 'single_text'
             ])

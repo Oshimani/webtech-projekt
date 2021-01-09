@@ -70,7 +70,6 @@ class PoemController extends AbstractController
         // echo serialize($poem);
         $form = $this->createForm(PoemType::class, $poem);
         $form->handleRequest($request);
-
         if($form->isSubmitted()){
 
             echo $form->isValid() ? 'true':'false';
