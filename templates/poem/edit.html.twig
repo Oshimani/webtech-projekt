@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Poem{% endblock %}
+
+{% block body %}
+    <h1>Edit Poem</h1>
+
+    {{ include('poem/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('poem_index') }}">back to list</a>
+
+    {{ include('poem/_delete_form.html.twig') }}
+{% endblock %}

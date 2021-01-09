@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Poem{% endblock %}
+
+{% block body %}
+    <h1>Poem</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ poem.id }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ poem.author }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ poem.content }}</td>
+            </tr>
+            <tr>
+                <th>Praise</th>
+                <td>{{ poem.praise }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ poem.created ? poem.created|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('poem_index') }}">back to list</a>
+
+    <a href="{{ path('poem_edit', {'id': poem.id}) }}">edit</a>
+
+    {{ include('poem/_delete_form.html.twig') }}
+{% endblock %}

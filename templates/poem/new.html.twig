@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Poem{% endblock %}
+
+{% block body %}
+    <h1>Create new Poem</h1>
+
+    {{ include('poem/_form.html.twig') }}
+
+    <a class="btn btn-danger" href="{{ path('poem_index') }}">back to list</a>
+{% endblock %}

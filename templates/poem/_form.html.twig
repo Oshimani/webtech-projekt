@@ -1,0 +1,42 @@
+{{ form_start(form) }}
+{{ form_row(form._token) }}
+{{form_errors(form)}}
+
+{# AUTHOR #}
+<div class="form-group">
+	{{form_row(form.author,{
+        'label_attr': {'class': ''},
+        'attr': {'class': 'form-control'}
+        })
+    }}
+</div>
+
+{# TITLE #}
+<div class="form-group">
+	{{form_row(form.title,{
+        'label_attr': {'class': ''},
+        'attr': {'class': 'form-control'}
+        })
+    }}
+</div>
+
+{# CONTENT #}
+<div class="form-group">
+	{{form_row(form.content,{
+        'label_attr': {'class': ''},
+        'attr': {'class': 'form-control'}
+        })
+    }}
+</div>
+
+{# CREATED #}
+<div class="form-group">
+	{{form_row(form.created,{
+        'label_attr': {'class': ''},
+        'attr': {'class': 'form-control', 'type':'date'}
+        })
+    }}
+</div>
+
+<button class="btn btn-primary">{{ button_label|default('Add new Poem') }}</button>
+{{ form_end(form,{'render_rest':false}) }}
