@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class PoemType extends AbstractType
 {
@@ -15,7 +16,8 @@ class PoemType extends AbstractType
         $builder
             ->add('author')
             ->add('title')
-            ->add('content')
+            ->add('content', TextareaType::class)
+            // not supposed to be edited
             // ->add('praise')
             ->add('created', DateType::class,[
                 'widget' => 'single_text'

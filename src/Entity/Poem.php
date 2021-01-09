@@ -23,7 +23,7 @@ class Poem
     private $author;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=10000)
      */
     private $content;
 
