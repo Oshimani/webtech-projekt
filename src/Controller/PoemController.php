@@ -33,7 +33,7 @@ class PoemController extends AbstractController
         $poem = new Poem();
         $form = $this->createForm(PoemType::class, $poem);
         $form->handleRequest($request);
-        
+
         // set praise initial to 0 -> default
         $poem->setPraise(0);
 
@@ -70,25 +70,45 @@ class PoemController extends AbstractController
         // echo serialize($poem);
         $form = $this->createForm(PoemType::class, $poem);
         $form->handleRequest($request);
-        if($form->isSubmitted()){
+        if ($form->isSubmitted()) {
 
-            echo $form->isValid() ? 'true':'false';
+            echo $form->isValid() ? 'true' : 'false';
         }
-        
+
         $poem->setPraise($prevPraise);
-        
+
 
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            
+
             return $this->redirectToRoute('poem_index');
         }
-        
+
 
         return $this->render('poem/edit.html.twig', [
             'poem' => $poem,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/praise", name="poem_praise", methods={"GET","POST"})
+     */
+    public function praise(Request $request, int $id): Response
+    {
+
+        // find poem (must exist since we navigated form poem detail view)
+        $entityManager = $this->getDoctrine()->getManager();
+        $poem = $entityManager->getRepository(Poem::class)->find($id);
+
+        // give +1 praise
+        $poem->setPraise($poem->getPraise() + 1);
+        $this->getDoctrine()->getManager()->flush();
+
+        // navigate back to poem
+        return $this->render('poem/show.html.twig', [
+            'poem' => $poem,
         ]);
     }
 

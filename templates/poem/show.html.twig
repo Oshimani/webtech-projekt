@@ -30,7 +30,24 @@
 			</table>
 		</div>
 	</div>
-	<a title="Back to list" class="btn btn-light" href="{{ path('poem_index') }}"><i class="bi bi-arrow-left-circle"></i></a>
-	<a title="Edit" class="btn btn-primary" href="{{ path('poem_edit', {'id': poem.id}) }}"><i class="bi bi-pencil"></i></a>
+
+    {# PRAISE BUTTON #}
+	<a title="give praise" class="btn btn-primary" href="{{ path('poem_praise', {'id': poem.id}) }}">
+		<i class="bi bi-hand-thumbs-up"></i> {{poem.praise}}
+	</a>
+
+	{# BACK BUTTON #}
+	<a title="Back to list" class="btn btn-light" href="{{ path('poem_index') }}">
+		<i class="bi bi-arrow-left-circle"></i>
+	</a>
+
+	{# EDIT BUTTON #}
+	<a title="Edit" class="btn btn-primary" href="{{ path('poem_edit', {'id': poem.id}) }}">
+		<i class="bi bi-pencil"></i>
+	</a>
+
+	
+
+	{# DELETE BUTTON #}
 	{{ include('poem/_delete_form.html.twig') }}
 {% endblock %}
