@@ -1,0 +1,4 @@
+.nav-item.active {
+    color:green !important;
+    border-bottom: solid 2px var(--primary);
+}

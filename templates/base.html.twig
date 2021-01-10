@@ -11,10 +11,64 @@
 			<link
 			rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 			{# BOOTSTRAP ICONS CSS #}
-			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+			<link
+			rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+			{# CUSTOM GLOBAL STYLES #}
+			<link rel="stylesheet" href="{{ asset('assets/css/global.css')}}"/>
 		{% endblock %}
 	</head>
 	<body>
+
+		{# NAVIGATION #}
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="/">Poems collection</a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				{# {{app.request.get('_route')}} #}
+				<ul
+					class="navbar-nav mr-auto">
+
+					{# HOME #}
+					{% if app.request.get('_route') | trim == 'index' %}
+						<li class="nav-item active">
+							<a class="nav-link active" href="/">Home</a>
+						</li>
+					{% else %}
+						<li class="nav-item ">
+							<a class="nav-link" href="/">Home</a>
+						</li>
+					{% endif %}
+
+					{# POEMS #}
+					{% if app.request.get('_route') matches '/^poem_.*/' %}
+						<li class="nav-item active">
+							<a class="nav-link" href="{{ path('poem_index')}}">Poems</a>
+						</li>
+					{% else %}
+						<li class="nav-item ">
+							<a class="nav-link" href="{{ path('poem_index')}}">Poems</a>
+						</li>
+					{% endif %}
+
+					{# AUTHORS #}
+					{% if app.request.get('_route') matches '/^author_.*/' %}
+						<li class="nav-item active">
+							<a class="nav-link" href="{{ path('author_index')}}">Authors</a>
+						</li>
+					{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('author_index')}}">Authors</a>
+						</li>
+					{% endif %}
+
+				</ul>
+			</div>
+		</nav>
+
 		<div
 			class="container">
 			{# CONTENT GOES HERE #}
