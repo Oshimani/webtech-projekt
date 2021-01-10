@@ -1,0 +1,30 @@
+{% block body %}
+	<div class="card author">
+		{% if author.imgUrl %}
+			<div class="img-container">
+				<img class="card-img-top" src="{{ author.imgUrl }}" alt="Card image cap">
+			</div>
+		{% else %}
+			<div class="p-4 text-center font-weight-bold bg-light">
+				No Image
+			</div>
+		{% endif %}
+
+		<div class="card-body">
+			<h5 class="card-title">{{author.name}}</h5>
+
+			<div
+				class="card-text font-weight-bold text-secondary border-bottom border-primary mb-2">
+				{# DATE OF BIRTH #}
+				<span class="">born:
+					{{author.dateOfBirth.format('d.m.Y')}}</span>
+
+				{# DATE OF DEATH #}
+				{% if author.dateOfDeath %}
+					<span class="float-right">died:
+						{{author.dateOfBirth.format('d.m.Y')}}</span>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

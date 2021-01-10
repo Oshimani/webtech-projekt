@@ -1,4 +1,11 @@
 .nav-item.active {
-    color:green !important;
     border-bottom: solid 2px var(--primary);
+}
+.author img{
+    /* max-height: 600px; */
+    max-width: 600px;
+}
+.author .img-container{
+    text-align: center;
+    background-color: var(--light);
 }

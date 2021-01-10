@@ -10,28 +10,9 @@
 		<div class="col-8">
 			<pre>{{poem.content}}</pre>
 		</div>
-		<div class="col-4 border-left bg-dark text-white p-4 rounded-lg">
-			<table class="">
-				<tbody>
-					<tr>
-						<th>by:</th>
-						<td>
-							{% if poem.author %}
-								{{poem.author.name}}
-							{% else %}
-								unknown
-							{% endif %}
-						</td>
-					</tr>
-
-					<tr>
-						<th>written:</th>
-						<td>
-							{{ poem.created ? poem.created | date('Y-m-d') : '' }}
-						</td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="col-4">
+			{{ include("author/_show.html.twig", {'author': poem.author})}}
+			
 		</div>
 	</div>
 

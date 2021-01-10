@@ -7,7 +7,9 @@
 
     {{ include('author/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('author_index') }}">back to list</a>
-
+	<a title="Back to list" class="btn btn-light" href="{{ path('author_index') }}">
+		<i class="bi bi-arrow-left-circle"></i>
+	</a>
+    
     {{ include('author/_delete_form.html.twig') }}
 {% endblock %}

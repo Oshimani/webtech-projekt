@@ -4,32 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<div class="card">
-		{% if author.imgUrl %}
-			<img class="card-img-top" src="{{ author.imgUrl }}" alt="Card image cap">
-		{% else %}
-			<div class="">
-				No Image
-			</div>
-		{% endif %}
-
-		<div class="card-body">
-			<h5 class="card-title">{{author.name}}</h5>
-
-			<div
-				class="card-text font-weight-bold text-secondary border-bottom border-primary mb-2">
-				{# DATE OF BIRTH #}
-				<span class="">born:
-					{{author.dateOfBirth.format('d.m.Y')}}</span>
-
-				{# DATE OF DEATH #}
-				{% if author.dateOfDeath %}
-					<span class="float-right">died:
-						{{author.dateOfBirth.format('d.m.Y')}}</span>
-				{% endif %}
-			</div>
-		</div>
-	</div>
+	{{ include("author/_show.html.twig", {'author': author})}}
 
 	{# BACK BUTTON #}
 	<a class="btn btn-light" href="{{ path('author_index') }}">
@@ -42,4 +17,5 @@
 	</a>
 
 	{{ include('author/_delete_form.html.twig') }}
+
 {% endblock %}

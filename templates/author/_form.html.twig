@@ -1,4 +1,49 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{{ form_row(form._token) }}
+{{form_errors(form)}}
+
+{# NAME #}
+<div class="form-group">
+	{{form_row(form.name,{
+        'label_attr': {'class': ''},
+        'attr': {'class': 'form-control'}
+        })
+    }}
+</div>
+
+{# DATE OF BIRTH #}
+<div class="form-group">
+	{{form_row(form.dateOfBirth,{
+        'label_attr': {'class': ''},
+        'attr': {'class': 'form-control'}
+        })
+    }}
+</div>
+
+{# DATE OF DEATH #}
+<div class="form-group">
+	{{form_row(form.dateOfDeath,{
+        'label_attr': {'class': ''},
+        'attr': {'class': 'form-control'}
+        })
+    }}
+</div>
+
+{# IMG URL #}
+<div class="form-group">
+	{{form_row(form.imgUrl,{
+        'label_attr': {'class': ''},
+        'attr': {'class': 'form-control'}
+        })
+    }}
+</div>
+
+<button class="btn btn-primary">
+	{% if button_label is defined%}
+		<i class="bi bi-cloud-check"></i>
+	{% else %}
+		<i class="bi bi-cloud-plus"></i>
+	{% endif %}
+</button>
+
+{{ form_end(form,{'render_rest':false}) }}
