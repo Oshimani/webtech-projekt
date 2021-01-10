@@ -83,8 +83,12 @@ class AuthorController extends AbstractController
      */
     public function delete(Request $request, Author $author): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$author->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $author->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            foreach ($author->getPoems() as $poem) {
+                $poem->setAuthor(NULL);
+            }
             $entityManager->remove($author);
             $entityManager->flush();
         }

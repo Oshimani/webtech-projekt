@@ -39,10 +39,11 @@ class Poem
 
     /**
      * @ORM\ManyToOne(targetEntity=Author::class, inversedBy="poems")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
      */
     private $author;
 
- 
+
     public function getId(): ?int
     {
         return $this->id;

@@ -19,7 +19,11 @@
 					{# METADATA #}
 					<div class="font-weight-bold text-secondary border-bottom border-primary mb-2">
 						<span>by
-							{# {{poem.author.name}}</span> #}
+							{% if poem.author %}
+								{{poem.author.name}}</span>
+						{% else %}
+							unknown
+						{% endif %}
 						<span class="float-right">{{poem.created.format('d.m.Y')}}</span>
 					</div>
 

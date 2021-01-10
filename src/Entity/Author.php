@@ -35,7 +35,12 @@ class Author
     private $dateOfDeath;
 
     /**
-     * @ORM\OneToMany(targetEntity=Poem::class, mappedBy="author")
+     * @ORM\Column(type="string", length=1024, nullable=true)
+     */
+    private $imgUrl;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Poem::class, mappedBy="author", cascade={"persist"})
      */
     private $poems;
 
@@ -81,6 +86,18 @@ class Author
     public function setDateOfDeath(?\DateTimeInterface $dateOfDeath): self
     {
         $this->dateOfDeath = $dateOfDeath;
+
+        return $this;
+    }
+
+    public function getImgUrl(): ?string
+    {
+        return $this->imgUrl;
+    }
+
+    public function setImgUrl(?string $imgUrl): self
+    {
+        $this->imgUrl = $imgUrl;
 
         return $this;
     }

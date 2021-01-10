@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Author;
 use App\Entity\Poem;
 use App\Form\PoemType;
 use App\Repository\PoemRepository;
@@ -119,6 +120,12 @@ class PoemController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete' . $poem->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $author = $entityManager->getRepository(Author::class)->find($poem->getAuthor());
+            if ($author) {
+                $author->removePoem($poem);
+            }
+
             $entityManager->remove($poem);
             $entityManager->flush();
         }

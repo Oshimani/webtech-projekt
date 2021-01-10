@@ -20,6 +20,7 @@ class AuthorType extends AbstractType
             ->add('dateOfDeath', DateType::class,[
                 'widget' => 'single_text'
             ])
+            ->add('imgUrl')
         ;
     }
 
