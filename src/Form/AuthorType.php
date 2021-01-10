@@ -6,6 +6,7 @@ use App\Entity\Author;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class AuthorType extends AbstractType
 {
@@ -13,8 +14,12 @@ class AuthorType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('dateOfBirth')
-            ->add('dateOfDeath')
+            ->add('dateOfBirth', DateType::class,[
+                'widget' => 'single_text'
+            ])
+            ->add('dateOfDeath', DateType::class,[
+                'widget' => 'single_text'
+            ])
         ;
     }
 

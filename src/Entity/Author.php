@@ -114,4 +114,10 @@ class Author
 
         return $this;
     }
+
+    // required for rendereing author name in dropdown under /poem/new
+    public function __toString(): string
+    {
+        return $this->name;
+    }
 }
