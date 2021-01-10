@@ -18,11 +18,6 @@ class Poem
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $author;
-
-    /**
      * @ORM\Column(type="string", length=10000)
      */
     private $content;
@@ -41,6 +36,11 @@ class Poem
      * @ORM\Column(type="string", length=255)
      */
     private $title;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Author::class, inversedBy="poems")
+     */
+    private $author;
 
     public function getId(): ?int
     {
