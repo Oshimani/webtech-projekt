@@ -19,14 +19,21 @@
 				<th></th>
 			</tr>
 		</thead>
+
 		<tbody>
 			{% for author in authors %}
-				<tr class="first-author">
+				<tr
+					class="first-author">
+
+					{# NAME #}
 					<td>
 						{% if author.score is defined %}
 							<i class="bi bi-trophy trophy"></i>
 						{% endif %}
-						{{ author.name }}</td>
+						{{ author.name }}
+					</td>
+
+					{# SCORE #}
 					{% if author.score is defined %}
 						<td>
 							{{author.score}}
@@ -35,6 +42,8 @@
 						<td>{{ author.dateOfBirth ? author.dateOfBirth | date('Y-m-d') : '' }}</td>
 						<td>{{ author.dateOfDeath ? author.dateOfDeath | date('Y-m-d') : '' }}</td>
 					{% endif %}
+
+					{# INTERACTION #}
 					<td>
 						{# OPEN #}
 						<a title="Show author" href="{{ path('author_show', {'id': author.id}) }}" class="btn btn-primary">
@@ -48,7 +57,7 @@
 				</tr>
 			{% else %}
 				<tr>
-					<td colspan="5">no records found</td>
+					<td colspan="5">no authors found</td>
 				</tr>
 			{% endfor %}
 		</tbody>
