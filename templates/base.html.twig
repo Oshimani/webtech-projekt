@@ -21,13 +21,16 @@
 
 		{# NAVIGATION #}
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="/"><i class="bi bi-book"></i> Poems collection</a>
+			<a class="navbar-brand" href="/">
+				<i class="bi bi-book"></i>
+				Poems collection</a>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div
+				class="collapse navbar-collapse" id="navbarSupportedContent">
 				{# {{app.request.get('_route')}} #}
 				<ul
 					class="navbar-nav mr-auto">
@@ -35,33 +38,55 @@
 					{# HOME #}
 					{% if app.request.get('_route') | trim == 'index' %}
 						<li class="nav-item active">
-							<a class="nav-link active" href="/"><i class="bi bi-house text-primary"></i> Home</a>
+							<a class="nav-link active" href="/">
+								<i class="bi bi-house text-primary"></i>
+								Home</a>
 						</li>
 					{% else %}
 						<li class="nav-item ">
-							<a class="nav-link" href="/"><i class="bi bi-house"></i> Home</a>
+							<a class="nav-link" href="/">
+								<i class="bi bi-house"></i>
+								Home</a>
 						</li>
 					{% endif %}
 
 					{# POEMS #}
 					{% if app.request.get('_route') matches '/^poem_.*/' %}
-						<li class="nav-item active">
-							<a class="nav-link" href="{{ path('poem_index')}}"><i class="bi bi-file-text text-primary"></i> Poems</a>
+						<li class="nav-item dropdown active">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+								<i class="bi bi-file-text text-primary"></i>
+								Poems</a>
+							{# DROPDOWN #}
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="{{ path('poem_best') }}"><i class="bi bi-trophy"></i> Best Poems</a>
+								<a class="dropdown-item" href="{{ path('poem_index') }}"><i class="bi bi-files"></i> All Poems</a>
+							</div>
 						</li>
 					{% else %}
-						<li class="nav-item ">
-							<a class="nav-link" href="{{ path('poem_index')}}"><i class="bi bi-file-text"></i> Poems</a>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+								<i class="bi bi-file-text"></i>
+								Poems</a>
+							{# DROPDOWN #}
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="{{ path('poem_best') }}"><i class="bi bi-trophy"></i> Best Poems</a>
+								<a class="dropdown-item" href="{{ path('poem_index') }}"><i class="bi bi-files"></i> All Poems</a>
+							</div>
 						</li>
 					{% endif %}
 
 					{# AUTHORS #}
 					{% if app.request.get('_route') matches '/^author_.*/' %}
 						<li class="nav-item active">
-							<a class="nav-link" href="{{ path('author_index')}}"><i class="bi bi-person text-primary"></i> Authors</a>
+							<a class="nav-link" href="{{ path('author_index')}}">
+								<i class="bi bi-person text-primary"></i>
+								Authors</a>
 						</li>
 					{% else %}
 						<li class="nav-item">
-							<a class="nav-link" href="{{ path('author_index')}}"><i class="bi bi-person"></i> Authors</a>
+							<a class="nav-link" href="{{ path('author_index')}}">
+								<i class="bi bi-person"></i>
+								Authors</a>
 						</li>
 					{% endif %}
 

@@ -1,11 +1,20 @@
 .nav-item.active {
     border-bottom: solid 2px var(--primary);
 }
-.author img{
+
+.author img {
     /* max-height: 600px; */
     max-width: 600px;
 }
-.author .img-container{
+
+.author .img-container {
     text-align: center;
     background-color: var(--light);
+}
+
+.first-author i.trophy {
+    opacity: 0;
+}
+.first-author:first-of-type i.trophy {
+    opacity: 1;
 }

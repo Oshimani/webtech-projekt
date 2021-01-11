@@ -1,29 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Authors{% endblock %}
+{% block title %}Authors
+{% endblock %}
 
 {% block body %}
-    <h1>Authors</h1>
+	<h1>Authors</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Date of birth</th>
-                <th>Date of death</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for author in authors %}
-            <tr>
-                <td>{{ author.id }}</td>
-                <td>{{ author.name }}</td>
-                <td>{{ author.dateOfBirth ? author.dateOfBirth|date('Y-m-d') : '' }}</td>
-                <td>{{ author.dateOfDeath ? author.dateOfDeath|date('Y-m-d') : '' }}</td>
-                <td>
-                {# OPEN #}
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				{% if authors[0].score is defined %}
+					<th>total praise</th>
+				{% else %}
+					<th>Date of birth</th>
+					<th>Date of death</th>
+				{% endif %}
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for author in authors %}
+				<tr class="first-author">
+					<td>
+						<i class="bi bi-trophy trophy"></i>
+						{{ author.name }}</td>
+					{% if author.score is defined %}
+						<td>
+							{{author.score}}
+						</td>
+					{% else %}
+						<td>{{ author.dateOfBirth ? author.dateOfBirth | date('Y-m-d') : '' }}</td>
+						<td>{{ author.dateOfDeath ? author.dateOfDeath | date('Y-m-d') : '' }}</td>
+					{% endif %}
+					<td>
+						{# OPEN #}
 						<a title="Show author" href="{{ path('author_show', {'id': author.id}) }}" class="btn btn-primary">
 							<i class="bi bi-eye"></i>
 						</a>
@@ -31,17 +42,17 @@
 						<a title="Edit author" href="{{ path('author_edit', {'id': author.id}) }}" class="btn btn-light">
 							<i class="bi bi-pencil"></i>
 						</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
-   {# NEW BUTTON #}
+	{# NEW BUTTON #}
 	<a class="btn btn-primary" href="{{ path('author_new') }}">
 		<i class="bi bi-plus"></i>
 		Add new author</a>

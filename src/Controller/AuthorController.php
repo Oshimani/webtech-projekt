@@ -22,6 +22,24 @@ class AuthorController extends AbstractController
     {
         return $this->render('author/index.html.twig', [
             'authors' => $authorRepository->findAll(),
+        ]);   
+    }
+
+      /**
+     * @Route("/top", name="author_top", methods={"GET"})
+     */
+    public function topThree(AuthorRepository $authorRepository): Response
+    {
+
+        // $result = $authorRepository->getTopThree();
+        // $res ="";
+        //  foreach ($result[0] as $key => $value) {
+        //     echo "$key => $value\n";
+        // }
+
+        // return new Response();
+        return $this->render('author/index.html.twig', [
+            'authors' => $authorRepository->getTopThree(),
         ]);
     }
 

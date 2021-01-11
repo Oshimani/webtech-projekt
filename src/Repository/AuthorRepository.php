@@ -47,4 +47,19 @@ class AuthorRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function getTopThree()
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT a.name AS name, a.id AS id, SUM(p.praise) AS score
+            FROM App\Entity\Author a, App\Entity\Poem p
+            WHERE a.id = p.author
+            GROUP BY a.id
+            ORDER BY score DESC
+            '
+        );
+        $query->setMaxResults(10);
+        return $query->getResult();
+    }
 }
