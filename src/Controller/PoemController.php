@@ -26,6 +26,17 @@ class PoemController extends AbstractController
         ]);
     }
 
+     /**
+     * @Route("/best", name="poem_best", methods={"GET"})
+     */
+    public function getBest(PoemRepository $poemRepository): Response
+    {
+        return $this->render('poem/index.html.twig', [
+            'poems' => $poemRepository->findBest(),
+            'isBest' => true
+        ]);
+    }
+
     /**
      * @Route("/new", name="poem_new", methods={"GET","POST"})
      */
@@ -68,24 +79,16 @@ class PoemController extends AbstractController
     public function edit(Request $request, Poem $poem): Response
     {
         $prevPraise = $poem->getPraise();
-        // echo serialize($poem);
         $form = $this->createForm(PoemType::class, $poem);
         $form->handleRequest($request);
-        if ($form->isSubmitted()) {
-
-            echo $form->isValid() ? 'true' : 'false';
-        }
 
         $poem->setPraise($prevPraise);
-
-
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('poem_index');
         }
-
 
         return $this->render('poem/edit.html.twig', [
             'poem' => $poem,
@@ -96,7 +99,7 @@ class PoemController extends AbstractController
     /**
      * @Route("/{id}/praise", name="poem_praise", methods={"GET","POST"})
      */
-    public function praise(Request $request, int $id): Response
+    public function praise( int $id): Response
     {
 
         // find poem (must exist since we navigated form poem detail view)

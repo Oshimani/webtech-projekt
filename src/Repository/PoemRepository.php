@@ -47,4 +47,19 @@ class PoemRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    // returns poems with more than 10 praise
+    public function findBest()
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\Poem p
+            WHERE p.praise >= 10
+            '
+        );
+
+        return $query->getResult();
+    }
 }

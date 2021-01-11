@@ -4,7 +4,12 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Poems</h1>
+
+	{% if isBest is defined %}
+		<h1>Poems with more than 10 praise</h1>
+	{% else %}
+		<h1>Poems</h1>
+	{% endif %}
 
 	<div>
 		{# POEM ITERATOR #}
