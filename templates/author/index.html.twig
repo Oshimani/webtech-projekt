@@ -11,7 +11,7 @@
 			<tr>
 				<th>Name</th>
 				{% if authors[0].score is defined %}
-					<th>total praise</th>
+					<th>Total praise</th>
 				{% else %}
 					<th>Date of birth</th>
 					<th>Date of death</th>
@@ -23,7 +23,9 @@
 			{% for author in authors %}
 				<tr class="first-author">
 					<td>
-						<i class="bi bi-trophy trophy"></i>
+						{% if author.score is defined %}
+							<i class="bi bi-trophy trophy"></i>
+						{% endif %}
 						{{ author.name }}</td>
 					{% if author.score is defined %}
 						<td>

@@ -58,8 +58,12 @@
 								Poems</a>
 							{# DROPDOWN #}
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="{{ path('poem_best') }}"><i class="bi bi-trophy"></i> Best Poems</a>
-								<a class="dropdown-item" href="{{ path('poem_index') }}"><i class="bi bi-files"></i> All Poems</a>
+								<a class="dropdown-item" href="{{ path('poem_best') }}">
+									<i class="bi bi-trophy"></i>
+									Best Poems</a>
+								<a class="dropdown-item" href="{{ path('poem_index') }}">
+									<i class="bi bi-files"></i>
+									All Poems</a>
 							</div>
 						</li>
 					{% else %}
@@ -69,24 +73,46 @@
 								Poems</a>
 							{# DROPDOWN #}
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="{{ path('poem_best') }}"><i class="bi bi-trophy"></i> Best Poems</a>
-								<a class="dropdown-item" href="{{ path('poem_index') }}"><i class="bi bi-files"></i> All Poems</a>
+								<a class="dropdown-item" href="{{ path('poem_best') }}">
+									<i class="bi bi-trophy"></i>
+									Best Poems</a>
+								<a class="dropdown-item" href="{{ path('poem_index') }}">
+									<i class="bi bi-files"></i>
+									All Poems</a>
 							</div>
 						</li>
 					{% endif %}
 
 					{# AUTHORS #}
 					{% if app.request.get('_route') matches '/^author_.*/' %}
-						<li class="nav-item active">
-							<a class="nav-link" href="{{ path('author_index')}}">
+						<li class="nav-item dropdown active">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 								<i class="bi bi-person text-primary"></i>
 								Authors</a>
+							{# DROPDOWN #}
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="{{ path('author_top') }}">
+									<i class="bi bi-trophy"></i>
+									Top 3</a>
+								<a class="dropdown-item" href="{{ path('author_index') }}">
+									<i class="bi bi-person"></i>
+									All Authors</a>
+							</div>
 						</li>
 					{% else %}
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('author_index')}}">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 								<i class="bi bi-person"></i>
 								Authors</a>
+							{# DROPDOWN #}
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="{{ path('author_top') }}">
+									<i class="bi bi-trophy"></i>
+									Top 3</a>
+								<a class="dropdown-item" href="{{ path('author_index') }}">
+									<i class="bi bi-person"></i>
+									All Authors</a>
+							</div>
 						</li>
 					{% endif %}
 
