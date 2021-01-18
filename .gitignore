@@ -11,3 +11,6 @@
 
 # keep database
 !var/data.db
+
+# hide readme from public
+readme.md
