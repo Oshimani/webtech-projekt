@@ -18,10 +18,12 @@
 		</p>
 
 		{# AUTHOR OF THE DAY #}
+		{% if author_of_the_day %}
 		<div>
 			<h3>{{author_of_the_day.name}} is the author of the day!</h3>
 			<img width=300 src="{{ author_of_the_day.imgUrl }}"></img>
 		</div>
+		{% endif %}
 
 		<p>
 			You can check out the code and this project's history at
